@@ -1,0 +1,184 @@
+{
+ "source": "Online Retail II - UCI Machine Learning Repository (https://archive.ics.uci.edu/dataset/502/online+retail+ii)",
+ "params": {
+  "topItems": 300,
+  "minBaskets": 2,
+  "maxBaskets": 20
+ },
+ "steps": [
+  {
+   "key": "load",
+   "label": "Dữ liệu gốc",
+   "note": "Gộp 2 sheet 2009-2010 và 2010-2011",
+   "rows": 1067371,
+   "invoices": 53628,
+   "customers": 5942,
+   "items": 5131
+  },
+  {
+   "key": "customer",
+   "label": "Có mã khách hàng",
+   "note": "Bỏ dòng thiếu Customer ID: không biết ai mua thì không tạo được chuỗi",
+   "rows": 824364,
+   "invoices": 44876,
+   "customers": 5942,
+   "items": 4646
+  },
+  {
+   "key": "valid",
+   "label": "Giao dịch hợp lệ",
+   "note": "Bỏ hoá đơn huỷ (Invoice bắt đầu bằng C), Quantity <= 0, Price <= 0",
+   "rows": 805549,
+   "invoices": 36969,
+   "customers": 5878,
+   "items": 4631
+  },
+  {
+   "key": "product",
+   "label": "Chỉ sản phẩm thật",
+   "note": "Bỏ mã phí/điều chỉnh: POST, D, M, DOT, BANK CHARGES, ADJUST, TEST...",
+   "rows": 802632,
+   "invoices": 36594,
+   "customers": 5852,
+   "items": 4619
+  },
+  {
+   "key": "normalize",
+   "label": "Chuẩn hoá & khử trùng lặp",
+   "note": "Mỗi StockCode giữ 1 tên phổ biến nhất, giá = trung vị; bỏ dòng trùng hoàn toàn",
+   "rows": 776577,
+   "invoices": 36594,
+   "customers": 5852,
+   "items": 4619
+  },
+  {
+   "key": "top_items",
+   "label": "Top 300 sản phẩm",
+   "note": "Giữ các sản phẩm có nhiều khách mua nhất để giảm độ thưa của dữ liệu",
+   "rows": 297886,
+   "invoices": 32854,
+   "customers": 5596,
+   "items": 300
+  },
+  {
+   "key": "sequences",
+   "label": "Chuỗi mua hàng",
+   "note": "Gộp hoá đơn cùng ngày thành 1 giỏ (30,466 giỏ / 5,596 khách); giữ khách có >= 2 giỏ, tối đa 20 giỏ gần nhất",
+   "rows": 284731,
+   "invoices": 31183,
+   "customers": 3959,
+   "items": 300
+  }
+ ],
+ "stats": {
+  "sequences": 3959,
+  "items": 300,
+  "trainBaskets": 21018,
+  "avgSeqLen": 5.31,
+  "medianSeqLen": 3.0,
+  "maxSeqLen": 19,
+  "avgBasketSize": 9.86,
+  "medianBasketSize": 7.0,
+  "maxBasketSize": 149,
+  "density": 0.0329,
+  "dateMin": "2009-12-01",
+  "dateMax": "2011-12-09",
+  "countries": 33
+ },
+ "seqLenHist": [
+  {
+   "label": "1",
+   "count": 987
+  },
+  {
+   "label": "2",
+   "count": 620
+  },
+  {
+   "label": "3",
+   "count": 452
+  },
+  {
+   "label": "4",
+   "count": 352
+  },
+  {
+   "label": "5",
+   "count": 233
+  },
+  {
+   "label": "6-7",
+   "count": 373
+  },
+  {
+   "label": "8-10",
+   "count": 353
+  },
+  {
+   "label": "11-15",
+   "count": 258
+  },
+  {
+   "label": "16+",
+   "count": 331
+  }
+ ],
+ "basketSizeHist": [
+  {
+   "label": "1",
+   "count": 1588
+  },
+  {
+   "label": "2",
+   "count": 1552
+  },
+  {
+   "label": "3-4",
+   "count": 3184
+  },
+  {
+   "label": "5-7",
+   "count": 4187
+  },
+  {
+   "label": "8-10",
+   "count": 3247
+  },
+  {
+   "label": "11-15",
+   "count": 3405
+  },
+  {
+   "label": "16-25",
+   "count": 2692
+  },
+  {
+   "label": "26-50",
+   "count": 1077
+  },
+  {
+   "label": "51+",
+   "count": 86
+  }
+ ],
+ "sample": {
+  "customer": 14316,
+  "baskets": [
+   {
+    "date": "2010-05-07",
+    "items": [
+     26,
+     106
+    ]
+   },
+   {
+    "date": "2010-06-10",
+    "items": [
+     48,
+     199
+    ]
+   }
+  ],
+  "spmf": "26 106 -1 48 199 -1 -2"
+ }
+}

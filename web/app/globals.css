@@ -1,0 +1,144 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-code), ui-monospace, monospace;
+
+  /* Thương hiệu: xanh dương */
+  --color-brand-50: #eef4ff;
+  --color-brand-100: #dce8ff;
+  --color-brand-200: #b9d0fb;
+  --color-brand-500: #2a6be0;
+  --color-brand-600: #1a56c9;
+  --color-brand-700: #1746a6;
+  --color-brand-800: #133a86;
+  --color-brand-900: #0f2d66;
+
+  /* Nền và chữ */
+  --color-page: #f3f5f8;
+  --color-surface: #ffffff;
+  --color-line: #e2e6ec;
+  --color-line-strong: #cfd5de;
+  --color-ink: #17202e;
+  --color-ink-2: #4a5567;
+  --color-ink-3: #7a8494;
+
+  /* Nhấn: giá tiền, nhãn nổi bật */
+  --color-accent: #d9491f;
+  --color-accent-soft: #fdf0ea;
+
+  /* Trạng thái */
+  --color-good: #12805c;
+  --color-good-soft: #e6f5ee;
+  --color-warn: #a35a00;
+  --color-warn-soft: #fff4dc;
+  --color-bad: #b42318;
+  --color-bad-soft: #fdecea;
+
+  /* Màu cố định cho 3 thuật toán trên mọi biểu đồ */
+  --color-gsp: #2a78d6;
+  --color-spade: #eb6834;
+  --color-prefixspan: #1baf7a;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-page);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+button,
+[role="button"],
+select,
+summary {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-brand-500);
+  outline-offset: 2px;
+}
+
+input[type="range"] {
+  accent-color: var(--color-brand-600);
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Thanh cuộn mảnh cho các vùng cuộn bên trong */
+.thin-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-line-strong) transparent;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.fade-up {
+  animation: fade-up 0.22s ease-out both;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.fade-in {
+  animation: fade-in 0.45s ease-out both;
+}
+
+@keyframes soft-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgb(42 107 224 / 0.35);
+  }
+  50% {
+    box-shadow: 0 0 0 5px rgb(42 107 224 / 0);
+  }
+}
+.soft-pulse {
+  animation: soft-pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: none;
+  }
+}
+.slide-in {
+  animation: slide-in 0.2s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-up,
+  .fade-in,
+  .soft-pulse,
+  .slide-in {
+    animation: none;
+  }
+}
